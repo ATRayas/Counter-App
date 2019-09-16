@@ -25,7 +25,9 @@ class Counter extends Component {
 
   handleIncrement = product => {
     // console.log("Increment Clicked", this);
-    console.log(product);
+    //this.props.value = 0; cannot assign to read only property 'value' of object'
+
+    //console.log(product);
     this.setState({ value: this.state.value + 1 });
   };
 
@@ -44,9 +46,16 @@ class Counter extends Component {
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           onClick={() => this.handleIncrement()}
-          className="btn btn-secondary btn-sm"
+          className="btn btn-secondary btn-sm m-2"
         >
           Increment
+        </button>
+
+        <button
+          onClick={() => this.props.onDelete(this.props.id)}
+          className="btn btn-danger btn-sm  m-2 "
+        >
+          Delete
         </button>
         {/* <ul>
           {this.state.tags.map(tag => (
